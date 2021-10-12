@@ -1,0 +1,152 @@
+<%- include('../partials/header') %> <%- include('../partials/sidebar') %>
+
+<div class="content-body">
+  <div class="row page-titles mx-0">
+    <div class="col p-md-0">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
+        <li class="breadcrumb-item active">
+          <a href="javascript:void(0)">Edit Profile</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <!-- row -->
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h4>Edit Profile</h4>
+
+            <div class="form-validation">
+              <% if(typeof errors !== 'undefined' && typeof errors.message !==
+              'undefined') { %>
+              <p class="alert alert-danger ml15 mr15 text-center">
+                <%- errors.message %>
+              </p>
+              <% } %> <% if(typeof success !== 'undefined' && typeof
+              success.message !== 'undefined') { %>
+              <p class="alert alert-success ml15 mr15 text-center">
+                <%- success.message %>
+              </p>
+              <% } %>
+
+              <form
+                class="form-valide"
+                action="/admin/api/update/<%= user._id %>"
+                method="post"
+              >
+                <div class="form-group row">
+                  <label class="col-lg-4 col-form-label" for="val_username"
+                    >Full Name <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-lg-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="val-username"
+                      name="fullName"
+                      value="<%= user.fullName %>"
+                      placeholder="Enter a username.."
+                    />
+                    <% if(typeof errors !== 'undefined' && typeof errors.name
+                    !== 'undefined') { %>
+                    <p class="error"><%- errors["name"] %></p>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-4 col-form-label" for="val-email"
+                    >Email <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-lg-6">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="val-email"
+                      value="<%= user.email %>"
+                      name="email"
+                      placeholder="Your valid email.."
+                      disabled
+                    />
+                    <% if(typeof errors !== 'undefined' && typeof errors.email
+                    !== 'undefined') { %>
+                    <p class="error"><%- errors[ "email" ] %></p>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-4 col-form-label" for="val-phoneus"
+                    >Mobile Number <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-lg-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="val-phoneus"
+                      value="<%= user.phoneNumber %>"
+                      name="phoneNumber"
+                      placeholder="91+7878768"
+                    />
+                    <% if(typeof errors !== 'undefined' && typeof errors.phone
+                    !== 'undefined') { %>
+                    <p class="error"><%- errors["phone"] %></p>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-4 col-form-label" for="val-addressus"
+                    >Address <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-lg-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="val-addressus"
+                      value="<%= user.address %>"
+                      name="address"
+                      placeholder="City / State"
+                    />
+                    <% if(typeof errors !== 'undefined' && typeof errors.address
+                    !== 'undefined') { %>
+                    <p class="error"><%- errors["address"] %></p>
+                    <% } %>
+                  </div>
+                </div>
+                <!-- <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-addressus">Role <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="SuperAdmin">SuperAdmin</option>
+                                            <option value="SuperAdmin">Two</option>
+                                            <option value="3">Three</option>
+                                          </select>
+                                        <input type="text" class="form-control" id="val-addressus" value="<%= user.role %>" name="address" placeholder="City / State">
+                                        <% if(typeof errors !== 'undefined' && typeof errors.address !== 'undefined') { %>
+                                            <p class = "error"><%- errors["address"] %></p>
+                                        <% } %> 
+                                    </div>
+                                </div> -->
+                <input type="hidden" name="role" value="SuperAdmin" />
+
+                <div class="form-group row">
+                  <div class="col-lg-8 ml-auto">
+                    <button type="submit" class="btn btn-primary">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #/ container -->
+</div>
+<%- include('../partials/footer') %>

@@ -1,0 +1,58 @@
+<%- include('../partials/login-header') %>
+
+<div class="login-form-bg h-100">
+  <div class="container h-100">
+    <div class="row justify-content-center h-100">
+      <div class="col-xl-6">
+        <div class="form-input-content">
+          <div class="card login-form mb-0">
+            <div class="card-body pt-5">
+              <a class="text-center" href="/admin/">
+                <span><img src="/images/logo.png" alt="" width="100px" /></span
+              ></a>
+
+              <% if(typeof msg !== 'undefined' && typeof msg.msg !==
+              'undefined') { %>
+              <p class="alert alert-success ml15 mr15 text-center">
+                <%- msg.msg %>
+              </p>
+              <% } %> <% if(typeof errors !== 'undefined' && typeof errors.msg
+              !== 'undefined') { %>
+              <p class="alert alert-danger ml15 mr15 text-center">
+                <%- errors.msg %>
+              </p>
+              <% } %>
+
+              <form
+                class="mt-5 mb-5 login-input"
+                action="/admin/api/fongotPassword"
+                method="post"
+              >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    value=""
+                    placeholder="Email"
+                  />
+                  <% if(typeof errors !== 'undefined' && typeof errors.email !==
+                  'undefined') { %>
+                  <p class="error"><%- errors[ "email" ] %></p>
+                  <% } %>
+                </div>
+                <input
+                  type="submit"
+                  class="btn login-form__btn submit w-100"
+                  value="Forgot Password"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/login-footer') %>

@@ -1,0 +1,25 @@
+<div class="jumbotron ">
+    <div class="row">
+        <div class="c0l-8">
+            <h4 class="font-weight-bold">     <%= user.fullName %></h4>
+            <p class="lead"> do you want to delete the user</p>
+            <p class="lead">
+            <form action="/admin/detele-user/<%= user._id %>" method="post">
+                <button class="btn btn-danger btn-lg "> delete</button>
+                <a class="btn btn-light btn-lg" href="/admin/all-users">cancel </a>
+            </form>
+
+            </p>
+
+        </div>
+        <div class="col-4">
+            <h1 class="font-weight-bolder  text-danger float-left">
+
+                <i class="fa fa-trash"></i>
+            </h1>
+
+        </div>
+        <!-- <h1><%= user.fullName %></h1>
+                <p><%= user.email %></p>    -->
+    </div>
+</div>
